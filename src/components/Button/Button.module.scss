@@ -1,6 +1,6 @@
 .wrapper {
   background-color: transparent;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -35,6 +35,18 @@
   }
   &:active {
     background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+}
+
+.text {
+  font-size: 1.6rem;
+  font-weight: normal;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+  &:active {
     color: var(--color-on-primary-container);
   }
 }
