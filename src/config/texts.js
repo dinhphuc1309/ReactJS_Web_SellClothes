@@ -11,6 +11,7 @@ const texts = {
   describeHome:
     " Fashion is like the breath of life every day and it always changes with the flow of events. You can even see a revolutionary approach in clothing. You can see and feel everything with fashion.",
   shopNow: "Shop now",
+  titleNewProducts: "New Products",
 
   //footer
   describe:

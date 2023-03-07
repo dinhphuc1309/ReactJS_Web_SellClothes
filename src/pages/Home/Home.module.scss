@@ -46,3 +46,19 @@
   line-height: 2.4rem;
   animation: slideInRight ease 0.5s;
 }
+
+.new-product-wrap {
+  margin-top: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.new-product-wrap-tile {
+  font-size: 4.2rem;
+  font-weight: bold;
+  line-height: 5.25rem;
+  color: var(--color-on-background);
+  margin-bottom: 1.6rem;
+}
