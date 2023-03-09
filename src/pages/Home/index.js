@@ -39,7 +39,7 @@ function Home() {
           {config.texts.titleNewProducts}
         </h2>
         <Row className="justify-content-md-center">
-          {newProduct.map((result, index) => (
+          {newProduct?.map((result, index) => (
             <Product key={index} product={result} />
           ))}
         </Row>

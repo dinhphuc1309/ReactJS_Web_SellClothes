@@ -11,8 +11,9 @@ function Button({
   navigation = false,
   outline = false,
   text = false,
+  expand = false,
   active = false,
-  keepActive = false,
+  selected = false,
   disabled = false,
   children,
   className,
@@ -48,9 +49,10 @@ function Button({
     primary,
     navigation,
     outline,
+    expand,
     text,
     active,
-    keepActive,
+    selected,
     disabled,
   });
 

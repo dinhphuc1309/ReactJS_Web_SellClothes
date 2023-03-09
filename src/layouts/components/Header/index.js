@@ -28,11 +28,11 @@ function Header() {
           <Row className={cx("action-nav")}>
             <Col>
               <Button
-                keepActive={stateNav === config.texts.home}
+                selected={stateNav === config.routes.home}
                 navigation
                 to={config.routes.home}
                 onClick={() => {
-                  handleChangeNav(config.texts.home);
+                  handleChangeNav(config.routes.home);
                 }}
               >
                 {config.texts.home}
@@ -40,23 +40,23 @@ function Header() {
             </Col>
             <Col>
               <Button
-                keepActive={stateNav === config.texts.product}
+                selected={stateNav === config.routes.products}
                 navigation
-                to={config.routes.product}
+                to={config.routes.products}
                 onClick={() => {
-                  handleChangeNav(config.texts.product);
+                  handleChangeNav(config.routes.products);
                 }}
               >
-                {config.texts.product}
+                {config.texts.products}
               </Button>
             </Col>
             <Col>
               <Button
-                keepActive={stateNav === config.texts.about}
+                selected={stateNav === config.routes.about}
                 navigation
                 to={config.routes.about}
                 onClick={() => {
-                  handleChangeNav(config.texts.about);
+                  handleChangeNav(config.routes.about);
                 }}
               >
                 {config.texts.about}

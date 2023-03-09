@@ -37,6 +37,14 @@
     background-color: var(--color-primary-container);
     color: var(--color-on-primary-container);
   }
+
+  &.selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    &:hover {
+      color: var(--color-on-primary-container);
+    }
+  }
 }
 
 .text {
@@ -72,10 +80,30 @@
   }
 }
 
-.keepActive {
-  background-color: var(--color-primary-container);
-  color: var(--color-on-primary-container);
+.expand {
+  padding: 0 1.6rem;
+  justify-content: left;
+  width: 100%;
+  min-height: 3.2rem;
+  border-radius: 0.8rem;
+  font-weight: 300;
+  line-height: 150%;
+  color: var(--color-on-background);
+  background-color: var(--color-background);
+
   &:hover {
-    color: var(--color-on-primary-container);
+    background-color: #d2d2d2;
+  }
+  &:active {
+    background-color: #ded0ba;
+  }
+
+  &.selected {
+    font-weight: bold;
+    background-color: var(--color-tertiary);
+    color: var(--color-on-tertiary-container);
+    &:hover {
+      color: var(--color-on-tertiary-container);
+    }
   }
 }

@@ -4,9 +4,28 @@ import config from "~/config";
 import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import Button from "~/components/Button";
+import * as authServices from "~/services/authServices";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(style);
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const newUser = {
+      Email: email,
+      PasswordUser: password,
+    };
+
+    authServices.loginUser(newUser, dispatch, navigate);
+  };
+
   return (
     <div className={cx("background")}>
       <div className={`${cx("container-authenForm")} shadow`}>
@@ -16,13 +35,14 @@ function Login() {
         <div className={cx("form-content")}>
           <div>
             <div className={cx("title")}>{config.texts.titleLogin}</div>
-            <div className="input-boxes">
+            <form className="input-boxes" onSubmit={handleLogin}>
               <div className={cx("input-box")}>
                 <FaEnvelope className={cx("icon")} />
                 <input
                   type="email"
                   placeholder={config.texts.enterYourEmail}
                   name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -32,6 +52,7 @@ function Login() {
                   type="password"
                   placeholder={config.texts.enterYourPassword}
                   name="password"
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
@@ -44,7 +65,7 @@ function Login() {
                 {config.texts.forgotPassword}
               </a>
 
-              <Button className={cx("button")} primary>
+              <Button className={cx("button")} primary type="submit">
                 {config.texts.buttonLogin}
               </Button>
               <div className={cx("textChangeScreen")}>
@@ -53,7 +74,7 @@ function Login() {
                   {config.texts.registerNow}
                 </Button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

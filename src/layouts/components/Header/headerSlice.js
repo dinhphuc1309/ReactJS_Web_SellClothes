@@ -4,7 +4,7 @@ import config from "~/config";
 export default createSlice({
   name: "header",
   initialState: {
-    navigation: config.texts.home,
+    navigation: config.routes.home,
   },
   reducers: {
     navigationChange: (state, action) => {

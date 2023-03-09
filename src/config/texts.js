@@ -3,7 +3,7 @@ const texts = {
 
   //nút chuyển màn hình
   home: "Home",
-  product: "Product",
+  products: "Products",
   about: "About",
 
   //màn hình home

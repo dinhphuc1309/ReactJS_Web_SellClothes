@@ -1,0 +1,61 @@
+/*khung bên ngoài*/
+.sidebar {
+  border-radius: 1.6rem;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--color-surface-variant-outline);
+  width: 100%;
+  padding: 1.6rem;
+  background-color: var(--color-background);
+  animation: slideInRight ease 0.6s;
+}
+
+.inner {
+  margin: 0 auto;
+
+  max-width: var(--width);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-variant);
+  height: 4.2rem;
+}
+
+.breadcrumb-inner {
+  width: 100%;
+
+  max-width: var(--width);
+}
+
+.heading {
+  color: var(--color-on-background);
+  font-size: 4.2rem;
+  font-weight: bold;
+  line-height: 5.2rem;
+}
+
+/*chữ tên bảng*/
+.text {
+  color: var(--color-on-surface-variant);
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 150%;
+  letter-spacing: 1.5px;
+}
+
+.sidebar-sex-wrap {
+  padding: 0 1.6rem;
+  margin-top: 0.8rem;
+}
+
+.sidebar-category-wrap {
+  padding: 0 1.6rem;
+}
+
+.sidebar-category-wrap li {
+  list-style: none;
+  margin-top: 0.8rem;
+}
