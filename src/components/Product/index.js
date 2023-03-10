@@ -1,7 +1,9 @@
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
+
 import styles from "./Product.module.scss";
+// eslint-disable-next-line
 import config from "~/config";
 import imgProduct from "~/assets/images/productImage.png";
 

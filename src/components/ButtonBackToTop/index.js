@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MdKeyboardArrowUp } from "react-icons/md";
-
 import classNames from "classnames/bind";
+
 import style from "./ButtonBackToTop.module.scss";
 
 const cx = classNames.bind(style);

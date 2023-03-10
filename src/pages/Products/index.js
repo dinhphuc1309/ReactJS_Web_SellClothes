@@ -1,22 +1,32 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import classNames from "classnames/bind";
+
 import styles from "./Products.module.scss";
 import Button from "~/components/Button";
 import Product from "~/components/Product";
-import { useEffect } from "react";
 import * as productServices from "~/services/productServices";
-import { useDispatch, useSelector } from "react-redux";
 import productsSlice from "./productsSlice";
-import { categorySelector } from "~/redux/selectors";
+import { categorySelector, productsSelector } from "~/redux/selectors";
+import { useChangeStateNav } from "~/hooks";
+import config from "~/config";
 
 const cx = classNames.bind(styles);
+
 function Products() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const category = useSelector(categorySelector);
+  const products = useSelector(productsSelector);
 
-  console.log("render");
+  useChangeStateNav(location);
+
+  console.log("render màn hình products");
   useEffect(() => {
+    console.log("render lấy sản phẩm");
     const fetchCategory = async () => {
       const newListSex = await productServices.getAllSex();
       const newListType = await productServices.getAllType();
@@ -27,7 +37,12 @@ function Products() {
       dispatch(productsSlice.actions.setCategory(category));
     };
     fetchCategory();
+    productServices.getAllProducts(dispatch);
   }, [dispatch]);
+
+  const handleChangeSelected = (idSelected) => {
+    dispatch(productsSlice.actions.setSelected(idSelected));
+  };
 
   return (
     <div className={cx("wrapper")}>
@@ -38,7 +53,7 @@ function Products() {
         </div>
       </div>
       <div className={cx("inner")}>
-        <h2 className={cx("heading")}>Living room</h2>
+        <h2 className={cx("heading")}>{config.texts.titleProductsPage}</h2>
         <Row>
           <Col md={3}>
             <div className={cx("sidebar")}>
@@ -46,7 +61,13 @@ function Products() {
               <div>
                 {category.sex?.map((sex) => (
                   <div key={sex.id} className={cx("sidebar-sex-wrap")}>
-                    <Button expand selected>
+                    <Button
+                      expand
+                      selected={sex.id === category.selected}
+                      onClick={() => {
+                        handleChangeSelected(sex.id);
+                      }}
+                    >
                       {sex.NameSex}
                     </Button>
                     <ul className={cx("sidebar-category-wrap")}>
@@ -54,7 +75,13 @@ function Products() {
                         if (type.Sex.id === sex.id) {
                           return (
                             <li key={type.id}>
-                              <Button expand selected>
+                              <Button
+                                expand
+                                selected={type.id === category.selected}
+                                onClick={() => {
+                                  handleChangeSelected(type.id);
+                                }}
+                              >
                                 {type.NameProductType}
                               </Button>
                             </li>
@@ -70,16 +97,9 @@ function Products() {
           </Col>
           <Col md={9}>
             <Row>
-              <Product />
-
-              <Product />
-
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              {products?.map((product, index) => (
+                <Product key={index} />
+              ))}
             </Row>
           </Col>
         </Row>

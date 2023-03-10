@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import config from "~/config";
 
 export default createSlice({
   name: "header",
   initialState: {
-    navigation: config.routes.home,
+    navigation: "",
   },
   reducers: {
     navigationChange: (state, action) => {

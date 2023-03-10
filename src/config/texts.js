@@ -13,6 +13,9 @@ const texts = {
   shopNow: "Shop now",
   titleNewProducts: "New Products",
 
+  //màn hình products
+  titleProductsPage: "Living room",
+
   //footer
   describe:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat condimentum sit scelerisque eu..",

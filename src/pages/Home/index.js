@@ -1,17 +1,23 @@
-import classNames from "classnames/bind";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import classNames from "classnames/bind";
 import { Row } from "react-bootstrap";
+
 import Button from "~/components/Button";
 import Product from "~/components/Product";
 import config from "~/config";
 import style from "./Home.module.scss";
-
 import * as productServices from "~/services/productServices";
+import { useChangeStateNav } from "~/hooks";
 
 const cx = classNames.bind(style);
 
 function Home() {
+  const location = useLocation();
   const [newProduct, setNewProduct] = useState([]);
+
+  console.log("render màn hình home");
+  useChangeStateNav(location);
 
   useEffect(() => {
     const fetchNewProducts = async () => {

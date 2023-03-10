@@ -1,9 +1,19 @@
 import request from "~/utils/request";
+import productsSlice from "~/pages/Products/productsSlice";
 
 export const newProduct = async (soLuong) => {
   try {
     const res = await request.get(`products/latest/${soLuong}`);
     return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllProducts = async (dispatch) => {
+  try {
+    const res = await request.get("products/GetAllProduct");
+    dispatch(productsSlice.actions.setProducts(res.data));
   } catch (error) {
     console.log(error);
   }

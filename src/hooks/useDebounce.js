@@ -7,6 +7,7 @@ function useDebounce(value, delay) {
     const hadler = setTimeout(() => setDebouncedValue(value), delay);
 
     return () => clearTimeout(hadler);
+    // eslint-disable-next-line
   }, [value]);
 
   return debouncedValue;

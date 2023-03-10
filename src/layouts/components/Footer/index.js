@@ -1,6 +1,7 @@
-import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
 import { Col, Row } from "react-bootstrap";
+
+import styles from "./Footer.module.scss";
 import config from "~/config";
 
 const cx = classNames.bind(styles);
@@ -10,15 +11,16 @@ function Footer() {
   const date = `${current.getDate()}/${
     current.getMonth() + 1
   }/${current.getFullYear()}`;
+
   return (
     <footer className={cx("wrapper")}>
       <div className={cx("inner")}>
         <Row>
-          <Col sm={2}>
+          <Col md={2}>
             <h1>{config.texts.logo}</h1>
             <p>{config.texts.describe}</p>
           </Col>
-          <Col sm={{ span: 2, offset: 1 }}>
+          <Col md={{ span: 2, offset: 1 }}>
             <strong>Contact info</strong>
             <p>
               {config.texts.numberPhone}

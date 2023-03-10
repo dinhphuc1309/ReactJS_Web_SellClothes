@@ -1,20 +1,22 @@
-import style from "../Authentication.module.scss";
-import classNames from "classnames/bind";
-import config from "~/config";
-import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
-import { FaEnvelope, FaLock } from "react-icons/fa";
-import Button from "~/components/Button";
-import * as authServices from "~/services/authServices";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import classNames from "classnames/bind";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+
+import style from "../Authentication.module.scss";
+import config from "~/config";
+import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
+import Button from "~/components/Button";
+import * as authServices from "~/services/authServices";
 
 const cx = classNames.bind(style);
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();

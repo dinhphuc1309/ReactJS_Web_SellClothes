@@ -8,6 +8,11 @@ export default createSlice({
       isFetching: false,
       error: false,
     },
+    register: {
+      isFetching: false,
+      error: false,
+      message: null,
+    },
   },
   reducers: {
     loginStart: (state) => {
@@ -21,6 +26,18 @@ export default createSlice({
     loginFailed: (state) => {
       state.login.isFetching = false;
       state.login.error = true;
+    },
+    registerStart: (state) => {
+      state.register.isFetching = true;
+    },
+    registerSuccess: (state, action) => {
+      state.register.isFetching = false;
+      state.register.message = action.payload;
+      state.register.error = false;
+    },
+    registerFailed: (state) => {
+      state.register.isFetching = false;
+      state.register.error = true;
     },
   },
 });

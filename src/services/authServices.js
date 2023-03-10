@@ -16,3 +16,17 @@ export const loginUser = async (user, dispatch, navigate) => {
     console.log(error);
   }
 };
+
+export const registerUser = async (user, dispatch, navigate) => {
+  dispatch(authSlice.actions.registerStart);
+  try {
+    const res = await request.post("users/addCustomer", user);
+    dispatch(authSlice.actions.registerSuccess(res.data.message));
+    if (res.data.account) {
+      navigate(config.routes.login);
+    }
+  } catch (error) {
+    dispatch(authSlice.actions.registerFailed());
+    console.log(error);
+  }
+};
