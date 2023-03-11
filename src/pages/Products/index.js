@@ -9,9 +9,10 @@ import Button from "~/components/Button";
 import Product from "~/components/Product";
 import * as productServices from "~/services/productServices";
 import productsSlice from "./productsSlice";
-import { categorySelector, productsSelector } from "~/redux/selectors";
+import { categorySelector, currentProductsSelector } from "~/redux/selectors";
 import { useChangeStateNav } from "~/hooks";
 import config from "~/config";
+import Pagination from "~/pages/Products/components/Pagination";
 
 const cx = classNames.bind(styles);
 
@@ -20,13 +21,13 @@ function Products() {
   const location = useLocation();
 
   const category = useSelector(categorySelector);
-  const products = useSelector(productsSelector);
+  const currentProducts = useSelector(currentProductsSelector);
 
   useChangeStateNav(location);
 
   console.log("render màn hình products");
   useEffect(() => {
-    console.log("render lấy sản phẩm");
+    console.log("render lấy tất cả sản phẩm");
     const fetchCategory = async () => {
       const newListSex = await productServices.getAllSex();
       const newListType = await productServices.getAllType();
@@ -40,8 +41,13 @@ function Products() {
     productServices.getAllProducts(dispatch);
   }, [dispatch]);
 
-  const handleChangeSelected = (idSelected) => {
-    dispatch(productsSlice.actions.setSelected(idSelected));
+  const handleChangeSelected = (idSex, idType) => {
+    if (idType) {
+      dispatch(productsSlice.actions.setSelected(idType));
+    } else {
+      dispatch(productsSlice.actions.setSelected(idSex));
+      productServices.getAllProductsBySex(idSex, dispatch);
+    }
   };
 
   return (
@@ -79,7 +85,7 @@ function Products() {
                                 expand
                                 selected={type.id === category.selected}
                                 onClick={() => {
-                                  handleChangeSelected(type.id);
+                                  handleChangeSelected(sex.id, type.id);
                                 }}
                               >
                                 {type.NameProductType}
@@ -97,10 +103,11 @@ function Products() {
           </Col>
           <Col md={9}>
             <Row>
-              {products?.map((product, index) => (
-                <Product key={index} />
+              {currentProducts?.map((product, index) => (
+                <Product key={index} product={product} />
               ))}
             </Row>
+            <Pagination></Pagination>
           </Col>
         </Row>
       </div>

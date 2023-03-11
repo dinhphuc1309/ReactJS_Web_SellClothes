@@ -107,3 +107,29 @@
     }
   }
 }
+
+.pagination {
+  background-color: var(--color-background);
+  font-size: 1.6rem;
+  min-width: 4rem;
+  min-height: 4rem;
+  border-radius: 0.8rem;
+  font-weight: normal;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+  &:active {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+  }
+
+  &.selected {
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    font-weight: bold;
+    &:hover {
+      color: var(--color-on-primary-container);
+    }
+  }
+}

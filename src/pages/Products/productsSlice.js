@@ -8,7 +8,11 @@ export default createSlice({
       type: null,
       selected: "",
     },
-    products: null,
+    products: {
+      currentPage: 1,
+      data: null,
+      productsPerPage: 12,
+    },
   },
   reducers: {
     setCategory: (state, action) => {
@@ -19,7 +23,10 @@ export default createSlice({
       state.category.selected = action.payload;
     },
     setProducts: (state, action) => {
-      state.products = action.payload;
+      state.products.data = action.payload;
+    },
+    setCurrentPage: (state, action) => {
+      state.products.currentPage = action.payload;
     },
   },
 });
