@@ -44,9 +44,13 @@ function Home() {
         <h2 className={cx("new-product-wrap-tile")}>
           {config.texts.titleNewProducts}
         </h2>
-        <Row className="justify-content-md-center">
+        <Row
+          className={`${cx(
+            "new-product-wrap-content"
+          )} justify-content-md-center`}
+        >
           {newProduct?.map((result, index) => (
-            <Product key={index} product={result} />
+            <Product xxl={2} key={index} product={result} />
           ))}
         </Row>
       </div>

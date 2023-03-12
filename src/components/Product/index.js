@@ -3,29 +3,34 @@ import { Link } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import styles from "./Product.module.scss";
-// eslint-disable-next-line
 import config from "~/config";
-import imgProduct from "~/assets/images/productImage.png";
 
 const cx = classNames.bind(styles);
 
-function Product({ product }) {
+function Product({ product, className, ...passProps }) {
   let VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
   });
+
+  const classes = cx("product-wrap", {
+    [className]: className,
+  });
+
+  const linkRoute = config.routes.productDetail.split(":")[0];
+
   return (
-    <Col md={3} className={cx("product-wrap")}>
+    <Col md={3} className={classes} {...passProps}>
       <div className={cx("product-inner")}>
-        <Link to={``}>
+        <Link to={`${linkRoute}:${product.NameProduct}`}>
           <img
             className={cx("product-image")}
-            src={imgProduct}
+            src={product.ImageProduct.DuongDanHinh}
             alt={product.NameProduct}
           />
 
           <div className={cx("product-info-wrap")}>
-            <p title="product" className={cx("product-name")}>
+            <p title={product.NameProduct} className={cx("product-name")}>
               {product.NameProduct}
             </p>
 

@@ -21,7 +21,18 @@ export const getAllProducts = async (dispatch) => {
 
 export const getAllProductsBySex = async (idSex, dispatch) => {
   try {
-    const res = await request.get(`products/GetAllProductBySex/Nam`);
+    const res = await request.get(`products/GetAllProductByIDSex/${idSex}`);
+    dispatch(productsSlice.actions.setProducts(res.data));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAllProductsBySexAndType = async (idSex, idType, dispatch) => {
+  try {
+    const res = await request.get(
+      `products/GetAllProByIDSexAndType/${idSex}/${idType}`
+    );
     dispatch(productsSlice.actions.setProducts(res.data));
   } catch (error) {
     console.log(error);

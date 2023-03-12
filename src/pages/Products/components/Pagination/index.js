@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames/bind";
-
-import styles from "./Pagination.module.scss";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
 
+import styles from "./Pagination.module.scss";
 import Button from "~/components/Button";
 import productsSlice from "~/pages/Products/productsSlice";
 import {
