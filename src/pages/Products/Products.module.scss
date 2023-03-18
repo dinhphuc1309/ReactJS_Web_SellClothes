@@ -14,6 +14,22 @@
 .breadcrumb-inner {
   width: 100%;
   max-width: var(--width);
+  display: flex;
+  align-items: center;
+  color: var(--color-surface-variant-outline);
+
+  a {
+    color: var(--color-surface-variant-outline);
+  }
+
+  a:hover {
+    color: var(--color-on-surface-variant);
+  }
+
+  p {
+    color: var(--color-on-surface-variant);
+    margin: 0;
+  }
 }
 
 .heading {

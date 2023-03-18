@@ -10,16 +10,14 @@ import Button from "~/components/Button";
 import productsSlice from "~/pages/Products/productsSlice";
 import {
   productsPerPageSelector,
-  productsSelector,
   currentPageSelector,
 } from "~/redux/selectors";
 
 const cx = classNames.bind(styles);
 
-function Pagination() {
+function Pagination({ products }) {
   const dispatch = useDispatch();
 
-  const products = useSelector(productsSelector);
   const productsPerPage = useSelector(productsPerPageSelector);
   const currentPage = useSelector(currentPageSelector);
 

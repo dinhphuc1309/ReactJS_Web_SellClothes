@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { Col, Row } from "react-bootstrap";
 import classNames from "classnames/bind";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 import styles from "./Products.module.scss";
 import Product from "~/components/Product";
@@ -12,7 +13,8 @@ import { categorySelector, currentProductsSelector } from "~/redux/selectors";
 import { useChangeStateNav } from "~/hooks";
 import config from "~/config";
 import Pagination from "~/pages/Products/components/Pagination";
-import Sidebar from "~/pages/Products/components/Sidebar";
+import Sidebar from "./components/Sidebar";
+import Searchbar from "./components/Searchbar";
 
 const cx = classNames.bind(styles);
 
@@ -48,8 +50,9 @@ function Products() {
     <div className={cx("wrapper")}>
       <div className={cx("breadcrumb")}>
         <div className={cx("breadcrumb-inner")}>
-          <Link>Home</Link>
-          <Link>Products</Link>
+          <Link to={config.routes.home}>{config.texts.home}</Link>
+          <MdKeyboardArrowRight />
+          <p>{config.texts.products}</p>
         </div>
       </div>
 
@@ -57,6 +60,7 @@ function Products() {
         <h2 className={cx("heading")}>{config.texts.titleProductsPage}</h2>
         <Row>
           <Col md={3}>
+            <Searchbar />
             <Sidebar category={category} dispatch={dispatch} />
           </Col>
           <Col md={9}>
@@ -65,7 +69,7 @@ function Products() {
                 <Product key={index} product={product} />
               ))}
             </Row>
-            <Pagination />
+            <Pagination products={currentProducts} />
           </Col>
         </Row>
       </div>

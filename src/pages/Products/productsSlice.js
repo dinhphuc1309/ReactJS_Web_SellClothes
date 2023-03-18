@@ -8,11 +8,12 @@ export default createSlice({
       type: null,
       selected: "",
     },
-    products: {
+    filters: {
       currentPage: 1,
-      data: null,
       productsPerPage: 12,
+      search: "",
     },
+    data: null,
   },
   reducers: {
     setCategory: (state, action) => {
@@ -23,10 +24,13 @@ export default createSlice({
       state.category.selected = action.payload;
     },
     setProducts: (state, action) => {
-      state.products.data = action.payload;
+      state.data = action.payload;
     },
     setCurrentPage: (state, action) => {
-      state.products.currentPage = action.payload;
+      state.filters.currentPage = action.payload;
+    },
+    setSearchText: (state, action) => {
+      state.filters.search = action.payload;
     },
   },
 });

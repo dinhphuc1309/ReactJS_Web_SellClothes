@@ -15,6 +15,7 @@ const texts = {
 
   //màn hình products
   titleProductsPage: "Living room",
+  searchProducts: "Search products",
 
   //footer
   describe:
