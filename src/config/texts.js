@@ -41,6 +41,18 @@ const texts = {
   confirmPassword: "Confirm password",
   alreadyHaveAnAccount: "Already have an account? ",
   loginNow: "Login now",
+
+  //account info
+  titleAccountInformation: "Account information",
+  labelFullName: "Tên người dùng",
+  labelMail: "Mail",
+  labelPhoneNumber: "phone",
+  labelAddress: "Địa chỉ",
+  titleChangePassword: "Đổi mật khẩu",
+  labelOldPassword: "Mật khẩu cũ",
+  labelNewPassword: "Mật khẩu mới",
+  labelReNewPassword: "Nhập lại mật khẩu mới",
+  save: "Save",
 };
 
 export default texts;

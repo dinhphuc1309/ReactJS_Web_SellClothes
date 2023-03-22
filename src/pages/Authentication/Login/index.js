@@ -9,7 +9,7 @@ import config from "~/config";
 import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
 import Button from "~/components/Button";
 import * as authServices from "~/services/authServices";
-import { currentUserSelector } from "~/redux/selectors";
+import { currentUserSelector, messageLogin } from "~/redux/selectors";
 
 const cx = classNames.bind(style);
 function Login() {
@@ -17,6 +17,7 @@ function Login() {
   const navigate = useNavigate();
 
   const currentUser = useSelector(currentUserSelector);
+  const warningMessage = useSelector(messageLogin);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,7 +76,9 @@ function Login() {
               >
                 {config.texts.forgotPassword}
               </a>
-
+              {warningMessage && (
+                <p className={cx("warning-text")}>{warningMessage} </p>
+              )}
               <Button className={cx("button")} primary type="submit">
                 {config.texts.buttonLogin}
               </Button>

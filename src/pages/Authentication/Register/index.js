@@ -53,14 +53,18 @@ function Register() {
             PasswordUser: password,
           };
         } else {
-          dispatch(authSlice.actions.registerSuccess("Mật khẩu không trùng"));
+          dispatch(
+            authSlice.actions.registerSuccess({
+              message: "Mật khẩu không trùng",
+            })
+          );
         }
       }
     } else {
       dispatch(
-        authSlice.actions.registerSuccess(
-          "Số điện thoại của bạn không đúng định dạng!"
-        )
+        authSlice.actions.registerSuccess({
+          message: "Số điện thoại của bạn không đúng định dạng!",
+        })
       );
     }
   };

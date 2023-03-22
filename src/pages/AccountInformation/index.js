@@ -44,12 +44,14 @@ function AccountInformation() {
   return (
     <div className={cx("background")}>
       <div className={`${cx("wrapper")} shadow`}>
-        <h2 className="text-left mb-5">Account information</h2>
+        <h2 className="text-left mb-5">
+          {config.texts.titleAccountInformation}
+        </h2>
         <form onSubmit={handleUpdateUser}>
           <Row className="justify-content-between">
             <Col md={5}>
               <div className={cx("group-infor")}>
-                <p>Tên người dùng</p>
+                <p>{config.texts.labelFullName}</p>
                 <input
                   type="text"
                   name="fullName"
@@ -59,7 +61,7 @@ function AccountInformation() {
                 />
               </div>
               <div className={cx("group-infor")}>
-                <p>Mail</p>
+                <p>{config.texts.labelMail}</p>
                 <input
                   type="email"
                   name="email"
@@ -69,7 +71,7 @@ function AccountInformation() {
                 />
               </div>
               <div className={cx("group-infor")}>
-                <p>Số điện thoại</p>
+                <p>{config.texts.labelPhoneNumber}</p>
                 <input
                   type="tel"
                   name="phone"
@@ -79,7 +81,7 @@ function AccountInformation() {
                 />
               </div>
               <div className={cx("group-infor")}>
-                <p>Địa chỉ</p>
+                <p>{config.texts.labelAddress}</p>
                 <input
                   type="text"
                   name="address"
@@ -90,9 +92,11 @@ function AccountInformation() {
               </div>
             </Col>
             <Col md={5}>
-              <p className={cx("title-content-wrap")}>Đổi mật khẩu</p>
+              <p className={cx("title-content-wrap")}>
+                {config.texts.titleChangePassword}
+              </p>
               <div className={cx("group-infor")}>
-                <p>Mật khẩu cũ</p>
+                <p>{config.texts.labelOldPassword}</p>
                 <input
                   type="password"
                   name="oldPass"
@@ -100,7 +104,7 @@ function AccountInformation() {
                 />
               </div>
               <div className={cx("group-infor")}>
-                <p>Mật khẩu mới</p>
+                <p>{config.texts.labelNewPassword}</p>
                 <input
                   type="password"
                   name="newPass"
@@ -108,7 +112,7 @@ function AccountInformation() {
                 />
               </div>
               <div className={cx("group-infor")}>
-                <p>Nhập lại mật khẩu mới</p>
+                <p>{config.texts.labelReNewPassword}</p>
                 <input
                   type="password"
                   name="reNewPass"
@@ -118,10 +122,10 @@ function AccountInformation() {
               {updateMess && <p className="mt-4">{updateMess}</p>}
               <div className={cx("group-button")}>
                 <Button outline to={config.routes.home}>
-                  Home
+                  {config.texts.home}
                 </Button>
                 <Button primary type="submit">
-                  Save
+                  {config.texts.save}
                 </Button>
               </div>
             </Col>
