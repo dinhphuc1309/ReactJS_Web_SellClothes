@@ -42,3 +42,8 @@
 .action-nav + .action-icon {
   margin-left: 10rem;
 }
+
+.action-icon {
+  display: flex;
+  align-items: center;
+}

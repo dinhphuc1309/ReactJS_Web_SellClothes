@@ -17,12 +17,10 @@ function Product({ product, className, ...passProps }) {
     [className]: className,
   });
 
-  const linkRoute = config.routes.productDetail.split(":")[0];
-
   return (
     <Col md={3} className={classes} {...passProps}>
       <div className={cx("product-inner")}>
-        <Link to={`${linkRoute}:${product.NameProduct}`}>
+        <Link to={config.routes.productDetail + product.id}>
           <img
             className={cx("product-image")}
             src={product.ImageProduct.DuongDanHinh}

@@ -7,7 +7,7 @@
   user-select: none;
 
   + .wrapper {
-    margin-left: 1.6rem;
+    margin-left: 16px;
   }
 
   &.disabled {
@@ -24,10 +24,10 @@
 .navigation {
   background-color: var(--color-background);
   font-size: 1.6rem;
-  min-width: 7.5rem;
-  min-height: 3.2rem;
-  border-radius: 1.6rem;
-  padding: 0.4rem, 1.6rem;
+  min-width: 75px;
+  min-height: 32px;
+  border-radius: 16px;
+  padding: 4px, 16px;
   font-weight: normal;
 
   &:hover {
@@ -62,10 +62,10 @@
 .primary {
   background-color: var(--color-primary-container);
   font-size: 1.6rem;
-  min-width: 9.1rem;
-  min-height: 4rem;
-  border-radius: 0.6rem;
-  padding: 0.8rem, 2rem;
+  min-width: 91px;
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 8px, 20px;
   font-weight: bold;
   box-shadow: 0px 6px 10px 4px rgba(0, 0, 0, 0.15),
     0px 2px 3px rgba(0, 0, 0, 0.3);
@@ -81,11 +81,11 @@
 }
 
 .expand {
-  padding: 0 1.6rem;
+  padding: 0 16px;
   justify-content: left;
   width: 100%;
-  min-height: 3.2rem;
-  border-radius: 0.8rem;
+  min-height: 32px;
+  border-radius: 8px;
   font-weight: 300;
   line-height: 150%;
   color: var(--color-on-background);
@@ -111,9 +111,9 @@
 .pagination {
   background-color: var(--color-background);
   font-size: 1.6rem;
-  min-width: 4rem;
-  min-height: 4rem;
-  border-radius: 0.8rem;
+  min-width: 40px;
+  min-height: 4px;
+  border-radius: 8px;
   font-weight: normal;
 
   &:hover {
@@ -131,5 +131,26 @@
     &:hover {
       color: var(--color-on-primary-container);
     }
+  }
+}
+
+.outline {
+  background-color: transparent;
+  font-size: 1.6rem;
+  min-width: 91px;
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 8px, 20px;
+  font-weight: bold;
+  border: 2px solid var(--color-surface-variant-outline);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  &:hover {
+    background-color: var(--color-hover-primary-container);
+  }
+  &:active {
+    background-color: var(--color-pressed-primary-container);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3),
+      0px 1px 3px 1px rgba(0, 0, 0, 0.15);
   }
 }

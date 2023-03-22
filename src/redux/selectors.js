@@ -34,4 +34,9 @@ export const currentProductsSelector = createSelector(
 );
 
 //auth
-export const messageRegisterSelector = (state) => state.auth.register.message;
+export const messageLogin = (state) => state.auth.login.message;
+export const messageRegister = (state) => state.auth.register.message;
+export const messageUpdate = (state) => state.auth.update.message;
+
+//user
+export const currentUserSelector = (state) => state.auth.currentUser;

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 import { FaEnvelope, FaLock } from "react-icons/fa";
@@ -9,14 +9,24 @@ import config from "~/config";
 import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
 import Button from "~/components/Button";
 import * as authServices from "~/services/authServices";
+import { currentUserSelector } from "~/redux/selectors";
 
 const cx = classNames.bind(style);
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const currentUser = useSelector(currentUserSelector);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate(config.routes.home);
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,8 +34,7 @@ function Login() {
       Email: email,
       PasswordUser: password,
     };
-
-    authServices.loginUser(newUser, dispatch, navigate);
+    authServices.loginUser(newUser, dispatch);
   };
 
   return (

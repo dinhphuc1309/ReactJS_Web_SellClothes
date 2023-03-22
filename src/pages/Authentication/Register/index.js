@@ -15,7 +15,7 @@ import { useState } from "react";
 import * as authServices from "~/services/authServices";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { messageRegisterSelector } from "~/redux/selectors";
+import { messageRegister } from "~/redux/selectors";
 import authSlice from "~/pages/Authentication/authSlice";
 
 const cx = classNames.bind(style);
@@ -32,7 +32,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [repass, setRepass] = useState("");
 
-  const warningMessage = useSelector(messageRegisterSelector);
+  const warningMessage = useSelector(messageRegister);
 
   const checkInfo = () => {
     var vnf_regex = /(09|03|07|08|05)+([0-9]{8})/;

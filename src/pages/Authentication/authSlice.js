@@ -3,12 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 export default createSlice({
   name: "auth",
   initialState: {
+    currentUser: null,
     login: {
-      currentUser: null,
       isFetching: false,
       error: false,
+      message: null,
     },
     register: {
+      isFetching: false,
+      error: false,
+      message: null,
+    },
+    update: {
       isFetching: false,
       error: false,
       message: null,
@@ -20,8 +26,8 @@ export default createSlice({
     },
     loginSuccess: (state, action) => {
       state.login.isFetching = false;
-      state.login.currentUser = action.payload;
-      state.login.error = false;
+      state.currentUser = action.payload.account;
+      state.login.message = action.payload.message;
     },
     loginFailed: (state) => {
       state.login.isFetching = false;
@@ -32,12 +38,22 @@ export default createSlice({
     },
     registerSuccess: (state, action) => {
       state.register.isFetching = false;
-      state.register.message = action.payload;
-      state.register.error = false;
+      state.register.message = action.payload.message;
     },
     registerFailed: (state) => {
       state.register.isFetching = false;
       state.register.error = true;
+    },
+    updateStart: (state) => {
+      state.update.isFetching = true;
+    },
+    updateSuccess: (state, action) => {
+      state.update.isFetching = false;
+      state.update.message = action.payload.message;
+    },
+    updateFailed: (state) => {
+      state.update.isFetching = false;
+      state.update.error = true;
     },
   },
 });
