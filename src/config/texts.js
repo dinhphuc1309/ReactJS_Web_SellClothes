@@ -5,6 +5,8 @@ const texts = {
   home: "Home",
   products: "Products",
   about: "About",
+  accountInformation: "Account Information",
+  logout: "Logout",
 
   //màn hình home
   welcome: "Welcome to FTeam",
@@ -16,6 +18,17 @@ const texts = {
   //màn hình products
   titleProductsPage: "Living room",
   searchProducts: "Search products",
+
+  //màn hình product detail
+  titleProductDetailPage: "Product detail",
+  titleDescription: "DESCRIPTION",
+  titleSize: "SIZE",
+  titleQuantity: "QUANTITY",
+  quantity: "Số lượng",
+  btnAddToCart: "Add to cart",
+  warningChooseSize: "Vui lòng chọn size !",
+  warningQuantityDoesNotMatch: "Số lượng không phù hợp !",
+  successOrder: "Đặt hàng thành công",
 
   //footer
   describe:
@@ -41,6 +54,9 @@ const texts = {
   confirmPassword: "Confirm password",
   alreadyHaveAnAccount: "Already have an account? ",
   loginNow: "Login now",
+  warningPhoneNumberIsNotInTheCorrectFormat:
+    "Số điện thoại của bạn không đúng định dạng!",
+  warningPasswordsAreNotTheSame: "Mật khẩu không trùng",
 
   //account info
   titleAccountInformation: "Account information",

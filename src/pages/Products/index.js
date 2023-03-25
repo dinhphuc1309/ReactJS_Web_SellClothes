@@ -9,7 +9,12 @@ import styles from "./Products.module.scss";
 import Product from "~/components/Product";
 import * as productServices from "~/services/productServices";
 import productsSlice from "./productsSlice";
-import { categorySelector, currentProductsSelector } from "~/redux/selectors";
+import {
+  categorySelector,
+  currentProductsSelector,
+  currentPageSelector,
+  productsPerPageSelector,
+} from "~/redux/selectors";
 import { useChangeStateNav } from "~/hooks";
 import config from "~/config";
 import Pagination from "~/pages/Products/components/Pagination";
@@ -23,7 +28,17 @@ function Products() {
   const location = useLocation();
 
   const category = useSelector(categorySelector);
+  const currentPage = useSelector(currentPageSelector);
+  const productsPerPage = useSelector(productsPerPageSelector);
+
+  const lastProductIndex = currentPage * productsPerPage;
+  const firstProductIndex = lastProductIndex - productsPerPage;
+
   const currentProducts = useSelector(currentProductsSelector);
+  const productDisplay = currentProducts.slice(
+    firstProductIndex,
+    lastProductIndex
+  );
 
   useChangeStateNav(location);
 
@@ -65,7 +80,7 @@ function Products() {
           </Col>
           <Col md={9}>
             <Row>
-              {currentProducts?.map((product, index) => (
+              {productDisplay?.map((product, index) => (
                 <Product key={index} product={product} />
               ))}
             </Row>

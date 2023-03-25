@@ -57,11 +57,11 @@ export const getAllType = async () => {
   }
 };
 
-// export const getProductsById = async (idProduct, dispatch) => {
-//   try {
-//     const res = await request.get(`products/GetAllProductByIDSex/${idSex}`);
-//     dispatch(productsSlice.actions.setProducts(res.data));
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+export const getAllSizeByIdProduct = async (idProduct) => {
+  try {
+    const res = await request.get("products/getSizeByProduct/" + idProduct);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

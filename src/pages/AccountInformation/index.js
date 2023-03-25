@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 import { Col, Row } from "react-bootstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./AccountInformation.module.scss";
@@ -8,11 +8,13 @@ import config from "~/config";
 import Button from "~/components/Button";
 import { currentUserSelector, messageUpdate } from "~/redux/selectors";
 import * as authServices from "~/services/authServices";
+import authSlice from "../Authentication/authSlice";
 
 const cx = classNames.bind(styles);
 
 function AccountInformation() {
   const dispatch = useDispatch();
+
   const currentUser = useSelector(currentUserSelector);
   const updateMess = useSelector(messageUpdate);
 
@@ -25,6 +27,19 @@ function AccountInformation() {
   const [newPassword, setNewPassword] = useState("");
   const [repassNewPassword, setRepassNewPassword] = useState("");
 
+  useEffect(() => {
+    dispatch(authSlice.actions.updateSuccess({ message: null }));
+    // eslint-disable-next-line
+  }, []);
+
+  const checkChangePassword = () => {
+    if (oldPassword === "" && newPassword === "" && repassNewPassword === "") {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const handleUpdateUser = (e) => {
     e.preventDefault();
     const userInfo = {
@@ -33,6 +48,12 @@ function AccountInformation() {
       PhoneNumber: phone,
       AddressUser: address,
     };
+    if (checkChangePassword) {
+      if (newPassword === repassNewPassword) {
+        userInfo.PassNew = newPassword;
+      }
+      userInfo.PasswordUserOld = oldPassword;
+    }
     authServices.updateUser(
       currentUser.id,
       userInfo,

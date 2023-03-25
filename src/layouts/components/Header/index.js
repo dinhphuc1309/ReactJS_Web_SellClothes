@@ -1,22 +1,34 @@
 import classNames from "classnames/bind";
-import { useSelector } from "react-redux";
-import { Col, NavDropdown, Row } from "react-bootstrap";
-import { MdSearch, MdOutlineShoppingCart } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Col, Row } from "react-bootstrap";
+import { MdOutlineShoppingCart } from "react-icons/md";
 import { RxAvatar } from "react-icons/rx";
 
 import styles from "./Header.module.scss";
 import config from "~/config";
 import Button from "~/components/Button";
 import { stateNavSelector, currentUserSelector } from "~/redux/selectors";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import authSlice from "~/pages/Authentication/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const stateNav = useSelector(stateNavSelector);
   const currentUser = useSelector(currentUserSelector);
 
-  const handleLogout = () => {};
+  const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+  const toggleDropdown = () => setIsOpenDropdown(!isOpenDropdown);
+
+  const handleLogout = () => {
+    toggleDropdown();
+    dispatch(authSlice.actions.logout());
+    navigate(config.routes.home);
+  };
 
   return (
     <header className={cx("wrapper")}>
@@ -55,36 +67,37 @@ function Header() {
           <Row className={cx("action-icon")}>
             <Col>
               <Button className={cx("icon")}>
-                <MdSearch />
-              </Button>
-            </Col>
-            <Col>
-              <Button className={cx("icon")}>
                 <MdOutlineShoppingCart />
               </Button>
             </Col>
             <Col>
               {currentUser ? (
-                <NavDropdown
-                  id="nav-dropdown-user"
-                  title={currentUser.FullName}
-                >
-                  <NavDropdown.Item>
-                    <Link
-                      className={cx("dropdown-item")}
-                      to={
-                        config.routes.AccountInformation + currentUser.FullName
-                      }
-                    >
-                      Account Information
-                    </Link>
-                  </NavDropdown.Item>
-
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={handleLogout}>
-                    <p className={cx("dropdown-item m-0")}>Logout</p>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <div>
+                  <Button text onClick={toggleDropdown}>
+                    {currentUser.FullName}
+                  </Button>
+                  {isOpenDropdown && (
+                    <ul className={`${cx("dropdown-list")} shadow`}>
+                      <li>
+                        <Button
+                          text
+                          to={
+                            config.routes.AccountInformation +
+                            currentUser.FullName
+                          }
+                          onClick={toggleDropdown}
+                        >
+                          {config.texts.accountInformation}
+                        </Button>
+                      </li>
+                      <li>
+                        <Button text onClick={handleLogout}>
+                          {config.texts.logout}
+                        </Button>
+                      </li>
+                    </ul>
+                  )}
+                </div>
               ) : (
                 <Button to={config.routes.login} className={cx("icon")}>
                   <RxAvatar />

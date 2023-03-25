@@ -11,7 +11,7 @@ import style from "../Authentication.module.scss";
 import config from "~/config";
 import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
 import Button from "~/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as authServices from "~/services/authServices";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -34,13 +34,18 @@ function Register() {
 
   const warningMessage = useSelector(messageRegister);
 
+  useEffect(() => {
+    dispatch(authSlice.actions.registerSuccess({ message: null }));
+    // eslint-disable-next-line
+  }, []);
+
   const checkInfo = () => {
     var vnf_regex = /(09|03|07|08|05)+([0-9]{8})/;
     if (phone.length === 10) {
       if (vnf_regex.test(phone) === false) {
         dispatch(
           authSlice.actions.registerSuccess(
-            "Số điện thoại của bạn không đúng định dạng!"
+            config.texts.warningPhoneNumberIsNotInTheCorrectFormat
           )
         );
       } else {
@@ -55,7 +60,7 @@ function Register() {
         } else {
           dispatch(
             authSlice.actions.registerSuccess({
-              message: "Mật khẩu không trùng",
+              message: config.texts.warningPasswordsAreNotTheSame,
             })
           );
         }
@@ -63,7 +68,7 @@ function Register() {
     } else {
       dispatch(
         authSlice.actions.registerSuccess({
-          message: "Số điện thoại của bạn không đúng định dạng!",
+          message: config.texts.warningPhoneNumberIsNotInTheCorrectFormat,
         })
       );
     }

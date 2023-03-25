@@ -14,21 +14,17 @@ export const productsPerPageSelector = (state) =>
 
 export const currentProductsSelector = createSelector(
   productsSelector,
-  currentPageSelector,
-  productsPerPageSelector,
   searchTextSelector,
-  (products, currentPage, productsPerPage, searchText) => {
-    const lastProductIndex = currentPage * productsPerPage;
-    const firstProductIndex = lastProductIndex - productsPerPage;
+  (products, searchText) => {
     if (searchText === "") {
-      return products?.slice(firstProductIndex, lastProductIndex);
+      return products;
     } else {
       const listSearchProduct = products?.filter((product) => {
         return product.NameProduct.toLowerCase().includes(
           searchText.toLowerCase()
         );
       });
-      return listSearchProduct.slice(firstProductIndex, lastProductIndex);
+      return listSearchProduct;
     }
   }
 );

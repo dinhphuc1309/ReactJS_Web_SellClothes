@@ -10,6 +10,7 @@ import imgAuthen from "~/assets/images/authenbackgroundImage.jpg";
 import Button from "~/components/Button";
 import * as authServices from "~/services/authServices";
 import { currentUserSelector, messageLogin } from "~/redux/selectors";
+import authSlice from "../authSlice";
 
 const cx = classNames.bind(style);
 function Login() {
@@ -21,6 +22,11 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    dispatch(authSlice.actions.loginSuccess({ message: null }));
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (currentUser) {

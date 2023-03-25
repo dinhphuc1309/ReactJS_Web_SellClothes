@@ -11,7 +11,7 @@ const publicRoutes = [
   { path: config.routes.home, component: Home },
   { path: config.routes.products, component: products },
   {
-    path: config.routes.productDetail + ":idProduct",
+    path: config.routes.products + "/:idProduct",
     component: ProductDetail,
   },
   { path: config.routes.about, component: About },

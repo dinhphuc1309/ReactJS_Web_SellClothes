@@ -20,7 +20,14 @@ function Product({ product, className, ...passProps }) {
   return (
     <Col md={3} className={classes} {...passProps}>
       <div className={cx("product-inner")}>
-        <Link to={config.routes.productDetail + product.id}>
+        <Link
+          to={
+            config.routes.products +
+            "/" +
+            product.NameProduct.replace(/\s+/g, "-").toLowerCase()
+          }
+          state={product}
+        >
           <img
             className={cx("product-image")}
             src={product.ImageProduct.DuongDanHinh}

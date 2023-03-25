@@ -13,7 +13,7 @@ function Button({
   text = false,
   expand = false,
   pagination = false,
-  active = false,
+  fab = false,
   selected = false,
   disabled = false,
   children,
@@ -53,7 +53,7 @@ function Button({
     expand,
     text,
     pagination,
-    active,
+    fab,
     selected,
     disabled,
   });

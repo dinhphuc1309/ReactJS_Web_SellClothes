@@ -55,5 +55,8 @@ export default createSlice({
       state.update.isFetching = false;
       state.update.error = true;
     },
+    logout: (state) => {
+      state.currentUser = null;
+    },
   },
 });
