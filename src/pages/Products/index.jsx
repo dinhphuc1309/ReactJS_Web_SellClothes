@@ -35,7 +35,7 @@ function Products() {
   const firstProductIndex = lastProductIndex - productsPerPage;
 
   const currentProducts = useSelector(currentProductsSelector);
-  const productDisplay = currentProducts.slice(
+  const productDisplay = currentProducts?.slice(
     firstProductIndex,
     lastProductIndex
   );

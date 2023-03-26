@@ -66,7 +66,7 @@ function Header() {
           </Row>
           <Row className={cx("action-icon")}>
             <Col>
-              <Button className={cx("icon")}>
+              <Button to={config.routes.cart} className={cx("icon")}>
                 <MdOutlineShoppingCart />
               </Button>
             </Col>
@@ -82,7 +82,7 @@ function Header() {
                         <Button
                           text
                           to={
-                            config.routes.AccountInformation +
+                            config.routes.accountInformation +
                             currentUser.FullName
                           }
                           onClick={toggleDropdown}

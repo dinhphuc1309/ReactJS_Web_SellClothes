@@ -8,13 +8,18 @@ import config from "~/config";
 import { Col, Row } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import * as productServices from "~/services/productServices";
+import * as cartServices from "~/services/cartServices";
 import Button from "~/components/Button";
+import { useSelector } from "react-redux";
+import { currentUserSelector } from "~/redux/selectors";
 
 const cx = classNames.bind(styles);
 
 function ProductDetail() {
   const location = useLocation();
   const product = location.state;
+
+  const currentUser = useSelector(currentUserSelector);
 
   const [warningMessage, setWarningMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -27,6 +32,12 @@ function ProductDetail() {
     style: "currency",
     currency: "VND",
   });
+
+  useEffect(() => {
+    if (!currentUser) {
+      setWarningMessage(config.texts.warningSignInToAddCart);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -55,8 +66,19 @@ function ProductDetail() {
       setWarningMessage(config.texts.warningQuantityDoesNotMatch);
       setSuccessMessage("");
     } else {
+      const productAddCart = {
+        Product: product.id,
+        Account: currentUser.id,
+        CartProductSize: selectedSize,
+        CartProductQuantity: quantity,
+      };
       setWarningMessage("");
-      setSuccessMessage(config.texts.successOrder);
+      const fetchAddToCart = async () => {
+        const response = await cartServices.addCart(productAddCart);
+        setSuccessMessage(response.message);
+      };
+      setQuantity(0);
+      fetchAddToCart();
     }
   };
 
@@ -147,7 +169,7 @@ function ProductDetail() {
                 <p className={cx("success-text")}>{successMessage}</p>
               )}
             </div>
-            <Button fab onClick={addToCart}>
+            <Button disabled={!currentUser} fab onClick={addToCart}>
               {config.texts.btnAddToCart}
             </Button>
           </Col>

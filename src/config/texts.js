@@ -28,7 +28,25 @@ const texts = {
   btnAddToCart: "Add to cart",
   warningChooseSize: "Vui lòng chọn size !",
   warningQuantityDoesNotMatch: "Số lượng không phù hợp !",
+  warningSignInToAddCart:
+    "Bạn cần đăng nhập để có thể thêm sản phẩm vào giỏ hàng !",
   successOrder: "Đặt hàng thành công",
+
+  //màn hình giỏ hàng
+  warningSignInToViewCart: "Đăng nhập để thấy sản phẩm của bạn !",
+  warningNoProducts: "Không có sản phẩm !",
+  titleTableIndex: "#",
+  titleTableProduct: "Product",
+  titleTableSize: "Size",
+  titleTablePrice: "Price",
+  titleTableQuantity: "Quantity",
+  titleTableTotal: "Total",
+  titleIntoMoney: "Into money",
+  titleTableTotalProductCost: "Total product cost",
+  titleTableTransportFee: "Transport fee",
+  titleTableTotalMoney: "Total money",
+  btnClearCart: "Clear Cart",
+  btnProceedToCheckout: "Proceed To Checkout",
 
   //footer
   describe:

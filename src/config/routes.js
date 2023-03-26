@@ -4,7 +4,8 @@ const routes = {
   about: "/about",
   login: "/login",
   register: "/register",
-  AccountInformation: "/accountInformation/",
+  accountInformation: "/accountInformation/",
+  cart: "/cart",
 };
 
 export default routes;
