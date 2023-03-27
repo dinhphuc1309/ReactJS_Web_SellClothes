@@ -39,7 +39,7 @@ function TableTotalPrice({ listCart, VND }) {
           </tr>
         </tbody>
       </Table>
-      <Button fab disabled={listCart.length === 0}>
+      <Button fab disabled={listCart.length === 0} className="mx-auto">
         {config.texts.btnProceedToCheckout}
       </Button>
     </div>

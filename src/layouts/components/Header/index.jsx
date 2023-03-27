@@ -10,7 +10,7 @@ import Button from "~/components/Button";
 import { stateNavSelector, currentUserSelector } from "~/redux/selectors";
 import { useState } from "react";
 import authSlice from "~/pages/Authentication/authSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -33,7 +33,9 @@ function Header() {
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <label className={cx("logo")}>{config.texts.logo}</label>
+        <Link to={config.routes.home} className={cx("logo")}>
+          {config.texts.logo}
+        </Link>
         <div className={cx("action")}>
           <Row className={cx("action-nav")}>
             <Col>

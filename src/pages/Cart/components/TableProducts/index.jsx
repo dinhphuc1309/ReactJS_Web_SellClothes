@@ -78,7 +78,9 @@ function TableProducts({
               );
             })
           ) : (
-            <p>{config.texts.warningNoProducts}</p>
+            <tr>
+              <td colSpan={7}>{config.texts.warningNoProducts}</td>
+            </tr>
           )}
         </tbody>
       </Table>

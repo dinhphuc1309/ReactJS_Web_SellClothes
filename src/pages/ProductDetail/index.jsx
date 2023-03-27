@@ -42,7 +42,10 @@ function ProductDetail() {
   useEffect(() => {
     const fetchCategory = async () => {
       const listSize = await productServices.getAllSizeByIdProduct(product.id);
-      setListSize(listSize);
+      console.log("size ne:" + listSize);
+      if (listSize) {
+        setListSize(listSize);
+      }
     };
     fetchCategory();
     // eslint-disable-next-line
@@ -122,7 +125,7 @@ function ProductDetail() {
             <div>
               <p>{config.texts.titleSize}</p>
               <div className="d-flex">
-                {listSize.map((size, index) => {
+                {listSize?.map((size, index) => {
                   return (
                     <Button
                       key={index}

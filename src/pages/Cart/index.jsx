@@ -61,23 +61,25 @@ function Cart() {
 
   return (
     <div className={cx("background")}>
-      <Row>
-        <Col md={8}>
-          <TableProducts
-            listCart={listCart}
-            vnd={VND}
-            handleClearCart={handleClearCart}
-            handleUpdateQuantity={handleIncreasingQuantity}
-          ></TableProducts>
+      <div className={cx("inner")}>
+        <Row className="mx-auto">
+          <Col md={8}>
+            <TableProducts
+              listCart={listCart}
+              vnd={VND}
+              handleClearCart={handleClearCart}
+              handleUpdateQuantity={handleIncreasingQuantity}
+            ></TableProducts>
 
-          {warningMessage && (
-            <p className={cx("warning-text")}>{warningMessage}</p>
-          )}
-        </Col>
-        <Col md={4}>
-          <TableTotalPrice listCart={listCart} VND={VND}></TableTotalPrice>
-        </Col>
-      </Row>
+            {warningMessage && (
+              <p className={cx("warning-text")}>{warningMessage}</p>
+            )}
+          </Col>
+          <Col md={4}>
+            <TableTotalPrice listCart={listCart} VND={VND}></TableTotalPrice>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 }

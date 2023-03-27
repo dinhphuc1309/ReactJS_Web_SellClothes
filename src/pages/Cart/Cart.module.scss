@@ -1,6 +1,12 @@
 .background {
   padding: 24px;
 }
+
+.inner {
+  margin: 0 auto;
+  max-width: var(--width);
+}
+
 .warning-text {
   font-weight: bold;
   color: red;

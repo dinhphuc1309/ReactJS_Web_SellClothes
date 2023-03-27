@@ -19,6 +19,19 @@ const texts = {
   titleProductsPage: "Living room",
   searchProducts: "Search products",
 
+  //màn hình about
+  titleAboutPage: "About us",
+  titleMyTeam: "My Team",
+  titleContact: "Contact",
+  websiteDescription:
+    "Website bán quần áo nam nữ thời thượng, cao cấp, giá cả hợp lý. Website được thiết kế dựa trên các xu hướng thiết kế hiện nay. Phục vụ công việc học tập và nghiên cứu. Được thực hiện bởi FTeam từ Hutech University",
+  jobPositionFrontend: "Frontend",
+  jobPositionBackend: "Backend",
+  phoneContact: "Phone",
+  addressContact: "Address",
+  openTimeContact: "Open time",
+  emailContact: "Email",
+
   //màn hình product detail
   titleProductDetailPage: "Product detail",
   titleDescription: "DESCRIPTION",
