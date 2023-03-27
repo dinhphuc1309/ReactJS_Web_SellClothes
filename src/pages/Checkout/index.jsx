@@ -21,8 +21,6 @@ function Checkout() {
   const [note, setNote] = useState("");
   const [total, setTotal] = useState(0);
 
-  const transportFee = 25000;
-
   let VND = new Intl.NumberFormat("vi-VN", {
     style: "currency",
     currency: "VND",
@@ -42,7 +40,7 @@ function Checkout() {
       const response = await invociceServices.createInvoice(
         currentUser.id,
         note,
-        transportFee,
+        config.texts.transportFee,
         currentUser.token
       );
       if (response) {
@@ -110,11 +108,11 @@ function Checkout() {
                   </tr>
                   <tr>
                     <th>{config.texts.titleTableTransportFee}</th>
-                    <td>{VND.format(transportFee)}</td>
+                    <td>{VND.format(config.texts.transportFee)}</td>
                   </tr>
                   <tr>
                     <th>{config.texts.titleTableTotalMoney}</th>
-                    <td>{VND.format(total + transportFee)}</td>
+                    <td>{VND.format(total + config.texts.transportFee)}</td>
                   </tr>
                 </tbody>
               </Table>

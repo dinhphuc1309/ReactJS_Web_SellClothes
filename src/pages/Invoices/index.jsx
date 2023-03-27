@@ -1,7 +1,11 @@
 import classNames from "classnames/bind";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
 import Button from "~/components/Button";
 import config from "~/config";
-
+import { currentUserSelector } from "~/redux/selectors";
+import * as invoicesServices from "~/services/invoiceServices";
 import styles from "./Invoices.module.scss";
 
 const cx = classNames.bind(styles);
@@ -12,25 +16,68 @@ function Invoices() {
     currency: "VND",
   });
 
+  const [listInvoice, setListInvoice] = useState([]);
+
+  const currentUser = useSelector(currentUserSelector);
+
+  const fetchAllInvoiceByIdUser = async () => {
+    const listInvoice = await invoicesServices.getAllInvoiceByIdUser(
+      currentUser.id,
+      currentUser.token
+    );
+    setListInvoice(listInvoice);
+  };
+  console.log("invoice ne: " + listInvoice);
+  useEffect(() => {
+    if (currentUser) {
+      fetchAllInvoiceByIdUser();
+    }
+    // eslint-disable-next-line
+  }, [currentUser]);
+
   return (
     <div className={cx("background")}>
       <div className={cx("inner")}>
         <h2 className={cx("heading")}>History</h2>
         <div className={cx("wrap-history")}>
-          <div className={cx("history-card")}>
-            <div>
-              <p className={cx("title-card")}>Mã hóa đơn</p>
-              <p>123</p>
-            </div>
-            <div>
-              <p className={cx("title-card")}>Tổng tiền</p>
-              <p>{VND.format(1000000)}</p>
-            </div>
+          {listInvoice?.map((invoice) => (
+            <div className={cx("history-card")}>
+              <div>
+                <p className={cx("title-card")}>
+                  {config.texts.labelOrderCode}
+                </p>
+                <p>{invoice.id}</p>
+              </div>
+              <div>
+                <p className={cx("title-card")}>
+                  {config.texts.labelBookingDate}
+                </p>
+                <p>{invoice.InvoiceDate}</p>
+              </div>
+              <div>
+                <p className={cx("title-card")}>
+                  {config.texts.titleTableTotalMoney}
+                </p>
+                <p>{VND.format(invoice.TotalInvoice)}</p>
+              </div>
+              <div>
+                <p className={cx("title-card")}>{config.texts.labelStatus}</p>
+                <p>
+                  {invoice.StatusInvoice === 0
+                    ? config.texts.unconfirmed
+                    : config.texts.confirmed}
+                </p>
+              </div>
 
-            <Button to={config.routes.invoices + "/" + 123} primary>
-              Detail
-            </Button>
-          </div>
+              <Button
+                to={config.routes.invoices + "/" + invoice.id}
+                state={invoice}
+                primary
+              >
+                {config.texts.btnDetail}
+              </Button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

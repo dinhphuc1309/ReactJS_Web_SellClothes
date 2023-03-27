@@ -31,11 +31,11 @@ function TableTotalPrice({ listCart, VND }) {
           </tr>
           <tr>
             <th>{config.texts.titleTableTransportFee}</th>
-            <td>{VND.format(25000)}</td>
+            <td>{VND.format(config.texts.transportFee)}</td>
           </tr>
           <tr>
             <th>{config.texts.titleTableTotalMoney}</th>
-            <td>{VND.format(total + 25000)}</td>
+            <td>{VND.format(total + config.texts.transportFee)}</td>
           </tr>
         </tbody>
       </Table>

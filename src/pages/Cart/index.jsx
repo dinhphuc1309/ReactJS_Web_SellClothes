@@ -56,7 +56,9 @@ function Cart() {
         fetchAllCartByIdUser();
       }
     };
-    fetchUpdateCart();
+    if (quantity > 0) {
+      fetchUpdateCart();
+    }
   };
 
   const handleDeleteCart = (idCart) => {

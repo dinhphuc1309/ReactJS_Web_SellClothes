@@ -61,12 +61,24 @@ const texts = {
   titleTableTotalMoney: "Total money",
   btnClearCart: "Clear Cart",
   btnProceedToCheckout: "Proceed To Checkout",
+  transportFee: 25000,
 
   //màn hình thanh toán
   titleCheckoutPage: "Billing Details",
   labelNote: "Ghi chú",
   readOnly: "*read only",
   btnOrder: "Order",
+
+  //màn hình đơn hàng
+  labelOrderCode: "Order code",
+  labelBookingDate: "Booking date",
+  labelStatus: "Status",
+  unconfirmed: "Unconfirmed",
+  confirmed: "Confirmed",
+  btnDetail: "Detail",
+
+  //màn hình chi tiết đơn hàng
+  titleInvocicesDetailPage: "Detail",
 
   //footer
   describe:
@@ -98,15 +110,22 @@ const texts = {
 
   //account info
   titleAccountInformation: "Account information",
-  labelFullName: "Tên khách hàng",
+  labelFullName: "Customer name",
   labelMail: "Mail",
-  labelPhoneNumber: "phone",
-  labelAddress: "Địa chỉ",
-  titleChangePassword: "Đổi mật khẩu",
-  labelOldPassword: "Mật khẩu cũ",
-  labelNewPassword: "Mật khẩu mới",
-  labelReNewPassword: "Nhập lại mật khẩu mới",
+  labelPhoneNumber: "Phone number",
+  labelAddress: "Address",
+  titleChangePassword: "Change password",
+  labelOldPassword: "Old password",
+  labelNewPassword: "New password",
+  labelReNewPassword: "Enter your new password",
   save: "Save",
+
+  //màn hình notice
+  yourOrderCode: "Mã đơn hàng của bạn là",
+  orderSuccess: "Đơn hàng sẽ được giao tới bạn trong thời gian sớm nhất",
+  orderFailed: "Có lỗi xảy ra hãy kiểm tra lại giỏ hàng và đặt lại !",
+  backHome: "Quay lại trang chủ",
+  backProducts: "Tiếp tục mua sắm",
 };
 
 export default texts;

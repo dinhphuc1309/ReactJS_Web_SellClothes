@@ -1,9 +1,13 @@
 import request from "~/utils/request";
 
-export const getAllInvoiceByIdUser = async (idUser) => {
+export const getAllInvoiceByIdUser = async (idUser, accessToken) => {
+  const config = {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  };
   try {
     const res = await request.get(
-      "invoices/getInvoiceHistoryByCustomerId/" + idUser
+      "invoices/getInvoiceHistoryByCustomerId/" + idUser,
+      config
     );
     return res.data;
   } catch (error) {
