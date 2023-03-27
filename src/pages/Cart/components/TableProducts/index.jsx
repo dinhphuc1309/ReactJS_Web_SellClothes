@@ -15,6 +15,7 @@ function TableProducts({
   vnd,
   handleClearCart,
   handleUpdateQuantity,
+  handleDeleteCart,
 }) {
   console.log(listCart);
 
@@ -37,7 +38,7 @@ function TableProducts({
             listCart.map((cart, index) => {
               const quantity = cart.CartProductQuantity;
               return (
-                <tr key={cart.div}>
+                <tr key={cart.id}>
                   <td>{index + 1}</td>
                   <td>
                     <Link className={cx("product-name")}>
@@ -70,7 +71,12 @@ function TableProducts({
                   </td>
                   <td>{vnd.format(cart.Product.PriceProduct * quantity)}</td>
                   <td>
-                    <Button text>
+                    <Button
+                      text
+                      onClick={() => {
+                        handleDeleteCart(cart.id);
+                      }}
+                    >
                       <FaTrashAlt />
                     </Button>
                   </td>

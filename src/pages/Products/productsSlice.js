@@ -10,7 +10,7 @@ export default createSlice({
     },
     filters: {
       currentPage: 1,
-      productsPerPage: 2,
+      productsPerPage: 12,
       search: "",
     },
     data: null,

@@ -77,8 +77,7 @@
   transition: all 0.3s ease;
 }
 
-.input-box input:focus,
-.input-box input:valid {
+.input-box input:focus {
   border-color: var(--color-surface-variant);
 }
 

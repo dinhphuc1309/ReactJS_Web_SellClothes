@@ -7,6 +7,10 @@ import Login from "~/pages/Authentication/Login";
 import Register from "~/pages/Authentication/Register";
 import AccountInformation from "~/pages/AccountInformation";
 import Cart from "~/pages/Cart";
+import Invoices from "~/pages/Invoices";
+import InvoiceDetail from "~/pages/InvoiceDetail";
+import Checkout from "~/pages/Checkout";
+import OrderNotice from "~/pages/OrderNotice";
 
 const publicRoutes = [
   { path: config.routes.home, component: Home },
@@ -23,6 +27,13 @@ const publicRoutes = [
     component: AccountInformation,
   },
   { path: config.routes.cart, component: Cart },
+  { path: config.routes.invoices, component: Invoices },
+  {
+    path: config.routes.invoices + "/:idInvoice",
+    component: InvoiceDetail,
+  },
+  { path: config.routes.checkout, component: Checkout },
+  { path: config.routes.orderNotice, component: OrderNotice },
 ];
 
 //Đăng nhập mới vào được không thì sẽ chuyển tới trang đăng nhập

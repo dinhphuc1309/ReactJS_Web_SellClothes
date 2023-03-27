@@ -34,10 +34,19 @@ export const updateQuantityCart = async (idCart, quantity) => {
     CartProductQuantity: quantity,
   };
   try {
-    const res = await request.put(
+    const res = await request.patch(
       "products/updateCart/" + idCart,
       CartUpdateQuantity
     );
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteCartByIdCart = async (idCart) => {
+  try {
+    const res = await request.delete("products/DeleteCartByID/" + idCart);
     return res.data;
   } catch (error) {
     console.log(error);

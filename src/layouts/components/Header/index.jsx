@@ -93,7 +93,17 @@ function Header() {
                         </Button>
                       </li>
                       <li>
-                        <Button text onClick={handleLogout}>
+                        <Button
+                          text
+                          to={config.routes.invoices}
+                          onClick={toggleDropdown}
+                        >
+                          {config.texts.orderHistory}
+                        </Button>
+                      </li>
+                      <hr />
+                      <li>
+                        <Button className="mx-auto" text onClick={handleLogout}>
                           {config.texts.logout}
                         </Button>
                       </li>

@@ -39,8 +39,7 @@
     padding: 2px 8px;
     background-color: transparent;
 
-    &:focus,
-    &:valid {
+    &:focus {
       border-color: var(--color-surface-variant);
     }
   }

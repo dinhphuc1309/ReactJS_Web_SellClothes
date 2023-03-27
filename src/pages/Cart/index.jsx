@@ -48,7 +48,7 @@ function Cart() {
     fetchClearCart();
   };
 
-  const handleIncreasingQuantity = (idCart, quantity) => {
+  const handleUpdateQuantity = (idCart, quantity) => {
     const fetchUpdateCart = async () => {
       const response = await cartServices.updateQuantityCart(idCart, quantity);
       if (response) {
@@ -57,6 +57,17 @@ function Cart() {
       }
     };
     fetchUpdateCart();
+  };
+
+  const handleDeleteCart = (idCart) => {
+    const fetchDeleteCart = async () => {
+      const response = await cartServices.deleteCartByIdCart(idCart);
+      if (response) {
+        setWarningMessage(response.message);
+        fetchAllCartByIdUser();
+      }
+    };
+    fetchDeleteCart();
   };
 
   return (
@@ -68,7 +79,8 @@ function Cart() {
               listCart={listCart}
               vnd={VND}
               handleClearCart={handleClearCart}
-              handleUpdateQuantity={handleIncreasingQuantity}
+              handleUpdateQuantity={handleUpdateQuantity}
+              handleDeleteCart={handleDeleteCart}
             ></TableProducts>
 
             {warningMessage && (

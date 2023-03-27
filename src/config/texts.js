@@ -7,6 +7,7 @@ const texts = {
   about: "About",
   accountInformation: "Account Information",
   logout: "Logout",
+  orderHistory: "Order history",
 
   //màn hình home
   welcome: "Welcome to FTeam",
@@ -61,6 +62,12 @@ const texts = {
   btnClearCart: "Clear Cart",
   btnProceedToCheckout: "Proceed To Checkout",
 
+  //màn hình thanh toán
+  titleCheckoutPage: "Billing Details",
+  labelNote: "Ghi chú",
+  readOnly: "*read only",
+  btnOrder: "Order",
+
   //footer
   describe:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat condimentum sit scelerisque eu..",
@@ -91,7 +98,7 @@ const texts = {
 
   //account info
   titleAccountInformation: "Account information",
-  labelFullName: "Tên người dùng",
+  labelFullName: "Tên khách hàng",
   labelMail: "Mail",
   labelPhoneNumber: "phone",
   labelAddress: "Địa chỉ",
