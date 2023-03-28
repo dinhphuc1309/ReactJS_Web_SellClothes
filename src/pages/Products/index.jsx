@@ -42,9 +42,7 @@ function Products() {
 
   useChangeStateNav(location);
 
-  console.log("render màn hình products");
   useEffect(() => {
-    console.log("render lấy tất cả sản phẩm");
     const fetchCategory = async () => {
       const newListSex = await productServices.getAllSex();
       const newListType = await productServices.getAllType();

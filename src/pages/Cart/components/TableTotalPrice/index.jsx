@@ -16,7 +16,6 @@ function TableTotalPrice({ listCart, VND }) {
     listCart.forEach((cart) => {
       total += cart.Product.PriceProduct * cart.CartProductQuantity;
     });
-    console.log(total);
     setTotal(total);
   }, [listCart]);
 

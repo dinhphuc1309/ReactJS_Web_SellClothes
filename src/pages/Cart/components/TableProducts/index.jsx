@@ -17,8 +17,6 @@ function TableProducts({
   handleUpdateQuantity,
   handleDeleteCart,
 }) {
-  console.log(listCart);
-
   return (
     <div>
       <Table striped>

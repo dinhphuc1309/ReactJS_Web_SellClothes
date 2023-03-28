@@ -65,7 +65,7 @@ const texts = {
 
   //màn hình thanh toán
   titleCheckoutPage: "Billing Details",
-  labelNote: "Ghi chú",
+  labelNote: "Note",
   readOnly: "*read only",
   btnOrder: "Order",
 

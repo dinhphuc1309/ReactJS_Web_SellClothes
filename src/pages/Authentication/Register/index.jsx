@@ -21,7 +21,6 @@ import authSlice from "~/pages/Authentication/authSlice";
 const cx = classNames.bind(style);
 
 function Register() {
-  console.log("render màn hình đăng ký");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

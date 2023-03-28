@@ -23,6 +23,11 @@ function Cart() {
     setListCart(listCart);
   };
 
+  let VND = new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+
   useEffect(() => {
     if (currentUser) {
       fetchAllCartByIdUser();
@@ -31,11 +36,6 @@ function Cart() {
     }
     // eslint-disable-next-line
   }, [currentUser]);
-
-  let VND = new Intl.NumberFormat("vi-VN", {
-    style: "currency",
-    currency: "VND",
-  });
 
   const handleClearCart = () => {
     const fetchClearCart = async () => {

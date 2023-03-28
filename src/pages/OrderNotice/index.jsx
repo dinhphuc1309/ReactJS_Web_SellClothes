@@ -11,20 +11,23 @@ function OrderNotice() {
   const location = useLocation();
   const Notice = location.state.response;
 
-  console.log(Notice);
   return (
     <div className={cx("background")}>
       <div className={`${cx("inner")} shadow`}>
-        <div className={cx("wrap-notice")}>
-          <p className={cx("success-text")}>{Notice.message}</p>
-          <p>{config.texts.yourOrderCode}:</p>
-          <p>123</p>
-          <p>{config.texts.orderSuccess}</p>
-        </div>
-        <div className={cx("wrap-notice")}>
-          <p className={cx("warning-text")}>{Notice.message}</p>
-          <p>{config.texts.orderFailed}</p>
-        </div>
+        {Notice.error ? (
+          <div className={cx("wrap-notice")}>
+            <p className={cx("warning-text")}>{Notice.message}</p>
+            <p>{config.texts.orderFailed}</p>
+          </div>
+        ) : (
+          <div className={cx("wrap-notice")}>
+            <p className={cx("success-text")}>{Notice.message}</p>
+            <p>{config.texts.yourOrderCode}:</p>
+            <p>{Notice.invoice.id}</p>
+            <p>{config.texts.orderSuccess}</p>
+          </div>
+        )}
+
         <div className={cx("wrap-button")}>
           <Button to={config.routes.home} primary>
             {config.texts.backHome}

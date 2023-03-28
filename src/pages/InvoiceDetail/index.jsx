@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import classNames from "classnames/bind";
 
 import styles from "./InvoiceDetail.module.scss";
@@ -24,7 +24,7 @@ function InvoiceDetail() {
     );
     setDetails(details);
   };
-  console.log("detail ne: " + details);
+
   useEffect(() => {
     if (invoice) {
       fetchInvoiceDetailByIdInvoice();
@@ -73,18 +73,31 @@ function InvoiceDetail() {
             </p>
           </div>
           {details?.map((detail) => (
-            <div className={cx("product-card")}>
+            <div key={detail.id} className={cx("product-card")}>
               <div>
                 <p className={cx("title-card")}>
                   {config.texts.titleTableProduct}
                 </p>
-                <p>{detail.id}</p>
+
+                <Link
+                  to={
+                    config.routes.products +
+                    "/" +
+                    detail.Product.NameProduct.replace(
+                      /\s+/g,
+                      "-"
+                    ).toLowerCase()
+                  }
+                  state={detail.Product}
+                >
+                  {detail.Product.NameProduct}
+                </Link>
               </div>
               <div>
                 <p className={cx("title-card")}>
                   {config.texts.titleTableSize}
                 </p>
-                <p>{detail.id}</p>
+                <p>{detail.TenSize}</p>
               </div>
               <div>
                 <p className={cx("title-card")}>

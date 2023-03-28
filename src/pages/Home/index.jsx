@@ -16,7 +16,6 @@ function Home() {
   const location = useLocation();
   const [newProduct, setNewProduct] = useState([]);
 
-  console.log("render màn hình home");
   useChangeStateNav(location);
 
   useEffect(() => {

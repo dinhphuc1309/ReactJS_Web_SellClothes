@@ -42,7 +42,6 @@ function ProductDetail() {
   useEffect(() => {
     const fetchCategory = async () => {
       const listSize = await productServices.getAllSizeByIdProduct(product.id);
-      console.log("size ne:" + listSize);
       if (listSize) {
         setListSize(listSize);
       }

@@ -27,7 +27,7 @@ function Invoices() {
     );
     setListInvoice(listInvoice);
   };
-  console.log("invoice ne: " + listInvoice);
+
   useEffect(() => {
     if (currentUser) {
       fetchAllInvoiceByIdUser();
@@ -41,7 +41,7 @@ function Invoices() {
         <h2 className={cx("heading")}>History</h2>
         <div className={cx("wrap-history")}>
           {listInvoice?.map((invoice) => (
-            <div className={cx("history-card")}>
+            <div key={invoice.id} className={cx("history-card")}>
               <div>
                 <p className={cx("title-card")}>
                   {config.texts.labelOrderCode}
