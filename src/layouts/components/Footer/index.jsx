@@ -8,9 +8,6 @@ const cx = classNames.bind(styles);
 
 function Footer() {
   const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-  }/${current.getFullYear()}`;
 
   return (
     <footer className={cx("wrapper")}>
@@ -21,7 +18,7 @@ function Footer() {
             <p>{config.texts.describe}</p>
           </Col>
           <Col md={{ span: 2, offset: 1 }}>
-            <strong>Contact info</strong>
+            <strong>{config.texts.titleContact}</strong>
             <p>
               {config.texts.numberPhone}
               <br />
@@ -32,7 +29,8 @@ function Footer() {
         <Col sm={10} className={`${cx("copy-right")} mx-auto text-center`}>
           <hr />
           <p>
-            Copyright {date}. Design by {config.texts.logo}.
+            Copyright&copy; {current.getFullYear()}. Design by{" "}
+            {config.texts.logo}.
           </p>
         </Col>
       </div>
